@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import randominator from "../util/Randominator";
 
 export default function DialogBox() {
   const [inputWord, setinputWord] = useState("");
@@ -13,7 +14,10 @@ export default function DialogBox() {
         "Enter only a single word which contains english alphabet letters only"
       );
       setinputWord("");
-    } else setOutputWord(inputWord);
+    } else {
+      setOutputWord(randominator(inputWord));
+      //setOutputWord(outputWord);
+    }
   };
   return (
     <div>
