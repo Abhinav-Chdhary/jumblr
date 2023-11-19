@@ -5,13 +5,13 @@ export default function DialogBox() {
   const [inputWord, setinputWord] = useState("");
   const [outputWord, setOutputWord] = useState("");
   const handleChange = (e) => {
-    setinputWord(e.target.value);
+    setinputWord(e.target.value.toLowerCase());
   };
   const handleSubmit = () => {
-    const isAlphabetic = /^[A-Za-z]+$/u.test(inputWord);
+    const isAlphabetic = /^[A-Za-z]{2,}$/u.test(inputWord);
     if (!isAlphabetic) {
       alert(
-        "Enter only a single word which contains english alphabet letters only"
+        "Enter only a single word which contains english alphabet letters and is of length greater than 1"
       );
       setinputWord("");
     } else {
