@@ -1,12 +1,14 @@
 const randominator = (word) => {
-  const n = word.length;
-  let res = "";
-  for (let i = 0; i < n; i++) {
-    let idx = Math.floor(Math.random() * n);
-    let charArray = word.split("");
-    [charArray[i], charArray[idx]] = [charArray[idx], charArray[i]];
-    res = charArray.join("");
+  const charArray = word.split("");
+
+  for (let i = charArray.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+
+    // Swap charArray[i] and charArray[j]
+    [charArray[i], charArray[j]] = [charArray[j], charArray[i]];
   }
+  let res = charArray.join("");
+  if (res === word) return randominator(word);
   return res;
 };
 module.exports = randominator;
