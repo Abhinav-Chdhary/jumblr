@@ -15,14 +15,16 @@ export default function RulesCarousel({ slides }) {
   };
 
   return (
-    <div className="flex items-center justify-center">
-      <button onClick={prevSlide} className="text-2xl">
+    <div className="flex items-center justify-center relative">
+      <button onClick={prevSlide} className="text-2xl ">
         ⮘
       </button>
-      <div className="max-w-screen-lg w-full h-96">
-        <div className="w-full h-full">{slides[currentIndex]}</div>
+      <div className="md:max-w-screen-lg relative">
+        <div className=" w-full relative overflow-hidden">
+          {slides[currentIndex]}
+        </div>
       </div>
-      <button onClick={nextSlide} className="text-2xl">
+      <button onClick={nextSlide} className="text-2xl ">
         ⮚
       </button>
     </div>
