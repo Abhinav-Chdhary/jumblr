@@ -22,7 +22,6 @@ export default function DialogBox() {
   return (
     <div>
       <div>
-        <h2 className=" py-2">Hi! Please enter a word to jumble:</h2>
         <input
           type="text"
           className="border rounded-md p-2 ring-1 border-blue-700 bg-slate-800"
@@ -33,10 +32,10 @@ export default function DialogBox() {
           }}
         />
         <button
-          className=" bg-blue-700 p-2 ml-2 rounded-md"
+          className=" bg-blue-700 p-2 ml-2 rounded-md text-md"
           onClick={handleSubmit}
         >
-          Go!
+          🪄
         </button>
       </div>
       <div className=" text-center">
