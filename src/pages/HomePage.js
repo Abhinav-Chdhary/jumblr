@@ -4,22 +4,22 @@ import RulesCarousel from "../components/RulesCarousel";
 
 export default function HomePage() {
   const slides = [
-    <img src="https://placekitten.com/800/400" alt="Slide 1" />,
-    <img src="https://placekitten.com/800/401" alt="Slide 2" />,
-    <img src="https://placekitten.com/800/402" alt="Slide 3" />,
+    <img src="/1.png" alt="Slide 1" />,
+    <img src="/2.png" alt="Slide 2" />,
+    <img src="/3.png" alt="Slide 3" />,
+    <img src="/4.png" alt="Slide 4" />,
   ];
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <div className="mx-4">
         <RulesCarousel slides={slides} />
       </div>
-      <div>
-        <Link to="/create">
-          <button className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md">
-            Play
-          </button>
-        </Link>
-      </div>
+
+      <Link to="/create">
+        <button className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md my-4">
+          Play
+        </button>
+      </Link>
     </div>
   );
 }
