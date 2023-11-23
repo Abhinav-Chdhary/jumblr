@@ -3,7 +3,7 @@ import randominator from "../util/Randominator";
 
 export default function DialogBox() {
   const [inputWord, setinputWord] = useState("");
-  const [outputWord, setOutputWord] = useState("");
+  const [outputWord, setOutputWord] = useState("jumbled word");
   const handleChange = (e) => {
     setinputWord(e.target.value.toLowerCase());
   };
@@ -30,6 +30,7 @@ export default function DialogBox() {
           onKeyDown={(e) => {
             if (e.key === "Enter") handleSubmit();
           }}
+          placeholder="original word"
         />
         <button
           className=" bg-blue-700 p-2 ml-2 rounded-md text-md"
@@ -40,7 +41,9 @@ export default function DialogBox() {
       </div>
       <div className=" text-center">
         <h2 className="py-2 m-2 border-dashed border-2 border-blue-700 hover:border-solid">
-          {outputWord}
+          <div className={outputWord === "jumbled word" ? "opacity-30" : ""}>
+            {outputWord}
+          </div>
         </h2>
       </div>
     </div>
