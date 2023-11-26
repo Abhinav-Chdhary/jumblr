@@ -33,7 +33,7 @@ export default function DialogBox() {
           placeholder="original word"
         />
         <button
-          className=" bg-blue-700 p-2 ml-2 rounded-md text-md"
+          className=" bg-blue-700 p-2 ml-2 rounded-md text-md hover:bg-blue-800 active:bg-blue-600"
           onClick={handleSubmit}
         >
           🪄

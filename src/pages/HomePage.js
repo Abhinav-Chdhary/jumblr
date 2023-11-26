@@ -16,7 +16,7 @@ export default function HomePage() {
       </div>
 
       <Link to="/create">
-        <button className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md my-4">
+        <button className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md my-4 hover:bg-blue-800 active:bg-blue-600">
           Play
         </button>
       </Link>
