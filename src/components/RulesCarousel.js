@@ -16,7 +16,10 @@ export default function RulesCarousel({ slides }) {
 
   return (
     <div className="flex items-center justify-center relative">
-      <button onClick={prevSlide} className="text-2xl ">
+      <button
+        onClick={prevSlide}
+        className="text-2xl hover:text-blue-700 active:text-blue-800 transform transition-transform hover:scale-125 active:scale-90"
+      >
         ⮘
       </button>
       <div className="md:max-w-screen-lg relative">
@@ -24,7 +27,10 @@ export default function RulesCarousel({ slides }) {
           {slides[currentIndex]}
         </div>
       </div>
-      <button onClick={nextSlide} className="text-2xl ">
+      <button
+        onClick={nextSlide}
+        className="text-2xl hover:text-blue-700 active:text-blue-800 transform transition-transform hover:scale-125 active:scale-90"
+      >
         ⮚
       </button>
     </div>
