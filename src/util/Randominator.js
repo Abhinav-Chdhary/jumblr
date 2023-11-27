@@ -1,4 +1,5 @@
 const randominator = (word) => {
+  //Fisher-Yates Algorithm
   const charArray = word.split("");
 
   for (let i = charArray.length - 1; i > 0; i--) {
