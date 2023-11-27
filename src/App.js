@@ -9,9 +9,9 @@ import { WordProvider } from "./components/WordContext";
 export default function App() {
   return (
     <div className="flex items-center justify-center h-screen bg-black text-white">
-      <TitleBar />
       <WordProvider>
         <BrowserRouter>
+          <TitleBar />
           <Routes>
             <Route exact path="/" element={<HomePage />} />
             <Route exact path="/create" element={<CreateGame />} />
