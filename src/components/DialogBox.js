@@ -19,12 +19,10 @@ export default function DialogBox({
       );
       setinputWord("");
     } else {
-      setOutputWord((prevOutputWord) => {
-        const newOutputWord = randominator(inputWord);
-        onOriginalWordUpdate(inputWord, index);
-        onJumbleWordUpdate(newOutputWord, index);
-        return newOutputWord;
-      });
+      const newOutputWord = randominator(inputWord);
+      setOutputWord(newOutputWord);
+      onOriginalWordUpdate(inputWord, index);
+      onJumbleWordUpdate(newOutputWord, index);
     }
   };
 
