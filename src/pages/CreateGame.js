@@ -24,7 +24,7 @@ export default function CreateGame() {
     });
   };
   const handleGameCreated = (e) => {
-    console.log(myWords, myJumbledWords);
+    //console.log(myWords, myJumbledWords);
     e.preventDefault();
     addOriginalWords(myWords);
     addJumbledWords(myJumbledWords);
