@@ -6,20 +6,20 @@ export const WordProvider = ({ children }) => {
   const [originalWords, setOriginalWords] = useState([]);
   const [jumbledWords, setJumbledWords] = useState([]);
 
-  const addOriginalWord = (word) => {
-    setOriginalWords((prevWords) => [...prevWords, word]);
+  const addOriginalWords = (words) => {
+    setOriginalWords(words);
   };
-  const addJumbledWord = (word) => {
-    setJumbledWords((prevWords) => [...prevWords, word]);
+  const addJumbledWords = (words) => {
+    setJumbledWords(words);
   };
 
   return (
     <WordContext.Provider
       value={{
         originalWords,
-        addOriginalWord,
+        addOriginalWords,
         jumbledWords,
-        addJumbledWord,
+        addJumbledWords,
       }}
     >
       {children}

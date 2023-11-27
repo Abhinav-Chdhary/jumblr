@@ -1,10 +1,11 @@
 import React, { useState } from "react";
-import { useWordContext } from "./WordContext";
 import randominator from "../util/Randominator";
 
-export default function DialogBox() {
-  const { addOriginalWord } = useWordContext();
-  const { addJumbledWord } = useWordContext();
+export default function DialogBox({
+  onOriginalWordUpdate,
+  onJumbleWordUpdate,
+  index,
+}) {
   const [inputWord, setinputWord] = useState("");
   const [outputWord, setOutputWord] = useState("jumbled word");
   const handleChange = (e) => {
@@ -19,11 +20,11 @@ export default function DialogBox() {
       setinputWord("");
     } else {
       setOutputWord(randominator(inputWord));
-      addOriginalWord(inputWord);
-      addJumbledWord(outputWord);
-      //setOutputWord(outputWord);
+      onOriginalWordUpdate(inputWord, index);
+      onJumbleWordUpdate(outputWord, index);
     }
   };
+
   return (
     <div>
       <div>
