@@ -1,9 +1,10 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import DialogBox from "../components/DialogBox";
 import { useWordContext } from "../components/WordContext";
 
 export default function CreateGame() {
+  const navigator = useNavigate();
   const { addOriginalWords } = useWordContext();
   const { addJumbledWords } = useWordContext();
   const [myWords, setMyWords] = useState(["", "", "", "", ""]);
@@ -27,6 +28,7 @@ export default function CreateGame() {
     e.preventDefault();
     addOriginalWords(myWords);
     addJumbledWords(myJumbledWords);
+    navigator("/run");
   };
   return (
     <div>
@@ -56,11 +58,12 @@ export default function CreateGame() {
         onJumbleWordUpdate={handleJumbleWordUpdate}
         index={4}
       />
-      <Link to="/run" onClick={handleGameCreated}>
-        <button className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md my-4 hover:bg-blue-800 active:bg-blue-600">
-          Done ⮚
-        </button>
-      </Link>
+      <button
+        className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md my-4 hover:bg-blue-800 active:bg-blue-600"
+        onClick={handleGameCreated}
+      >
+        Done ⮚
+      </button>
     </div>
   );
 }
