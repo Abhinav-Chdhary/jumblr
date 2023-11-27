@@ -4,7 +4,7 @@ export default function CheckerBox({ question, answer }) {
   const [userAnswer, setUserAnswer] = useState("");
   return (
     <div className="flex items-center m-2">
-      <h2 className="border-solid border-2 border-blue-700 p-2 rounded-md">
+      <h2 className="border-solid border-2 border-blue-700 p-2 rounded-md w-32 text-center">
         {question}
       </h2>
       <div className="ml-4">
@@ -18,7 +18,7 @@ export default function CheckerBox({ question, answer }) {
           }}
         />
         <button className="bg-white p-2 ml-2 rounded-md text-md hover:bg-gray-300 active:bg-gray-400">
-          🔍
+          {userAnswer === answer ? <>✅</> : <>🔍</>}
         </button>
       </div>
     </div>
