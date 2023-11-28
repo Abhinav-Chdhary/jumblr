@@ -9,6 +9,7 @@ export default function CheckerBox({ question, answer }) {
       </h2>
       <div className="ml-4">
         <input
+          name="answer"
           type="text"
           className="border rounded-md p-2 ring-1 border-blue-700 bg-slate-800"
           placeholder="What can it be?"

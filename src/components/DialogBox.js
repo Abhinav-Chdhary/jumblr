@@ -30,6 +30,7 @@ export default function DialogBox({
     <div>
       <div>
         <input
+          name="word"
           type="text"
           className="border rounded-md p-2 ring-1 border-blue-700 bg-slate-800"
           value={inputWord}
