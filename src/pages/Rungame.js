@@ -7,6 +7,7 @@ export default function Rungame() {
   const [timer, setTimer] = useState(59);
   const { originalWords } = useWordContext();
   const { jumbledWords } = useWordContext();
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     const timerId = setInterval(() => {
@@ -16,11 +17,15 @@ export default function Rungame() {
     return () => clearInterval(timerId);
   }, []);
 
+  const handleScoreUpdate = (value) => {
+    setScore((prevScore) => prevScore + value);
+  };
+
   return (
     <div>
       <div className="flex justify-between">
         <h3 className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md hover:bg-blue-800 active:bg-blue-600">
-          Score:
+          Score:{score}
         </h3>
         <h1 className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md hover:bg-blue-800 active:bg-blue-600">
           {timer}
@@ -32,6 +37,7 @@ export default function Rungame() {
           key={index}
           question={jumbledWord}
           answer={originalWords[index]}
+          onUpdate={handleScoreUpdate}
         />
       ))}
 
