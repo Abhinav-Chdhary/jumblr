@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useWordContext } from "../components/WordContext";
 import CheckerBox from "../components/CheckerBox";
 
 export default function Rungame() {
+  const navigator = useNavigate();
   const [timer, setTimer] = useState(59);
   const { originalWords } = useWordContext();
   const { jumbledWords } = useWordContext();
@@ -16,6 +17,11 @@ export default function Rungame() {
 
     return () => clearInterval(timerId);
   }, []);
+  useEffect(() => {
+    if (jumbledWords.length < 5) {
+      navigator("/create");
+    }
+  }, [jumbledWords, navigator]);
 
   const handleScoreUpdate = (value) => {
     setScore((prevScore) => prevScore + value);
@@ -31,7 +37,6 @@ export default function Rungame() {
           {timer}
         </h1>
       </div>
-
       {jumbledWords.map((jumbledWord, index) => (
         <CheckerBox
           key={index}
@@ -40,7 +45,6 @@ export default function Rungame() {
           onUpdate={handleScoreUpdate}
         />
       ))}
-
       <Link to="/create">
         <button className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md hover:bg-blue-800 active:bg-blue-600">
           Play again ⮚
