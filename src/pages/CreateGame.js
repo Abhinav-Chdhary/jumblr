@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import DialogBox from "../components/DialogBox";
 import { useWordContext } from "../components/WordContext";
+import AlertModal from "../components/AlertModal";
 
 export default function CreateGame() {
   const navigator = useNavigate();
@@ -10,6 +11,7 @@ export default function CreateGame() {
   const { addOriginalWords, addJumbledWords } = useWordContext();
   const [myWords, setMyWords] = useState(originalMap);
   const [myJumbledWords, setMyJumbledWords] = useState(jumbleMap);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const handleWordUpdate = (word, index, setter) => {
     setter((prevWords) => {
@@ -21,9 +23,21 @@ export default function CreateGame() {
 
   const handleGameCreated = (e) => {
     e.preventDefault();
-    addOriginalWords(Array.from(myWords.values()));
-    addJumbledWords(Array.from(myJumbledWords.values()));
-    navigator("/run");
+    const wordsArray = Array.from(myWords.values());
+    const jumbledWordsArray = Array.from(myJumbledWords.values());
+
+    if (
+      wordsArray.length < 5 ||
+      jumbledWordsArray.length < 5 ||
+      wordsArray.includes("") ||
+      jumbledWordsArray.includes("")
+    ) {
+      setIsModalOpen(true);
+    } else {
+      addOriginalWords(wordsArray);
+      addJumbledWords(jumbledWordsArray);
+      navigator("/run");
+    }
   };
 
   return (
@@ -47,6 +61,13 @@ export default function CreateGame() {
       >
         Done ⮚
       </button>
+
+      {isModalOpen && (
+        <AlertModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+      )}
     </div>
   );
 }
