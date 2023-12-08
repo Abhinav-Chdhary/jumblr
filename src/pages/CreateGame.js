@@ -3,26 +3,26 @@ import { useNavigate } from "react-router-dom";
 import DialogBox from "../components/DialogBox";
 import { useWordContext } from "../components/WordContext";
 
-const initialArray = ["", "", "", "", ""];
-
 export default function CreateGame() {
   const navigator = useNavigate();
+  const originalMap = new Map();
+  const jumbleMap = new Map();
   const { addOriginalWords, addJumbledWords } = useWordContext();
-  const [myWords, setMyWords] = useState([...initialArray]);
-  const [myJumbledWords, setMyJumbledWords] = useState([...initialArray]);
+  const [myWords, setMyWords] = useState(originalMap);
+  const [myJumbledWords, setMyJumbledWords] = useState(jumbleMap);
 
   const handleWordUpdate = (word, index, setter) => {
     setter((prevWords) => {
-      const newWords = [...prevWords];
-      newWords[index] = word;
+      const newWords = new Map(prevWords);
+      newWords.set(index, word);
       return newWords;
     });
   };
 
   const handleGameCreated = (e) => {
     e.preventDefault();
-    addOriginalWords(myWords);
-    addJumbledWords(myJumbledWords);
+    addOriginalWords(Array.from(myWords.values()));
+    addJumbledWords(Array.from(myJumbledWords.values()));
     navigator("/run");
   };
 
