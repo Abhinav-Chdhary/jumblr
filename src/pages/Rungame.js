@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { useWordContext } from "../components/WordContext";
 import CheckerBox from "../components/CheckerBox";
+import GameOverModal from "../components/GameOverModal";
 
 export default function Rungame() {
   const navigator = useNavigate();
@@ -9,14 +10,21 @@ export default function Rungame() {
   const { originalWords } = useWordContext();
   const { jumbledWords } = useWordContext();
   const [score, setScore] = useState(0);
+  const [isGameOverOpen, setGameOverOpen] = useState(false);
 
   useEffect(() => {
     const timerId = setInterval(() => {
-      setTimer((prevTime) => prevTime - 1);
+      setTimer((prevTime) => {
+        if (prevTime === 0 || score === 50) {
+          clearInterval(timerId);
+          setGameOverOpen(true);
+        }
+        return prevTime === 0 ? 0 : prevTime - 1;
+      });
     }, 1000);
 
     return () => clearInterval(timerId);
-  }, []);
+  }, [score]);
   useEffect(() => {
     if (jumbledWords.length < 5) {
       navigator("/create");
@@ -45,11 +53,9 @@ export default function Rungame() {
           onUpdate={handleScoreUpdate}
         />
       ))}
-      <Link to="/create">
-        <button className="bg-blue-700 text-3xl font-bold py-2 px-5 rounded-md hover:bg-blue-800 active:bg-blue-600">
-          Play again ⮚
-        </button>
-      </Link>
+      {isGameOverOpen && (
+        <GameOverModal onClose={() => setGameOverOpen(false)} score={score} />
+      )}
     </div>
   );
 }
