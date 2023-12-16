@@ -12,3 +12,7 @@ There are none actually, so if there's anything you think will help feel free to
 - Tailwind css
 
 ## Check it out [HERE](https://abhinav-chdhary.github.io/jumblr/)
+
+## Future Work
+
+- Upgrade to Online Multiplayer
