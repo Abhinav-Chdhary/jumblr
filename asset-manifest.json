@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/jumblr/static/css/main.a9723950.css",
-    "main.js": "/jumblr/static/js/main.b5a84a52.js",
+    "main.js": "/jumblr/static/js/main.58c1aac6.js",
     "index.html": "/jumblr/index.html",
     "main.a9723950.css.map": "/jumblr/static/css/main.a9723950.css.map",
-    "main.b5a84a52.js.map": "/jumblr/static/js/main.b5a84a52.js.map"
+    "main.58c1aac6.js.map": "/jumblr/static/js/main.58c1aac6.js.map"
   },
   "entrypoints": [
     "static/css/main.a9723950.css",
-    "static/js/main.b5a84a52.js"
+    "static/js/main.58c1aac6.js"
   ]
 }
