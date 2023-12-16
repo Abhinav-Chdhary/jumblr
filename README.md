@@ -6,7 +6,9 @@ This is a word jumbling game that you can play with your friends. It's still in 
 
 There are none actually, so if there's anything you think will help feel free to open a pull request.
 
-### Tools use (yet):
+### Tools used (yet):
 
 - React
 - Tailwind css
+
+## Check it out [HERE](https://abhinav-chdhary.github.io/jumblr/)
